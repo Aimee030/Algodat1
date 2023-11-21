@@ -56,6 +56,10 @@ public class SparseVector {
             throw new IndexOutOfBoundsException("Index out of Bounds");
         }
         Node entry = this.head;
+        if(entry.index == index){
+            this.head = entry.next;
+            return;
+        }
         Node curr = entry;
         Node next = entry.next;
         while(next != null) {
