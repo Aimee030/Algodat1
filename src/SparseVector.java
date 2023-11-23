@@ -18,6 +18,10 @@ public class SparseVector {
         if(value == 0){
             return;
         }
+        if(nodeExists(index)){
+            setValue(index, value);
+            return;
+        }
         Node node = new Node(value, index);
         if(this.head != null) {
             Node entry = this.head;
@@ -124,7 +128,24 @@ public class SparseVector {
         }
     }
 
+    boolean nodeExists(int index){
+        Node entry = this.head;
+        while(entry != null){
+            if(entry.index == index) return true;
+            entry = entry.next;
+        }
+        return false;
+    }
 
+    void setValue(int index, double value){
+        Node entry = this.head;
+        while(entry != null){
+            if(entry.index == index){
+                entry.value = value;
+                return;
+            }
+        }
+    }
 
 }
 
