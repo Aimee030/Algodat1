@@ -16,6 +16,7 @@ public class SparseVector {
             throw new IndexOutOfBoundsException("Index out of Bounds");
         }
         if(value == 0){
+            removeElement(index);
             return;
         }
         if(nodeExists(index)){

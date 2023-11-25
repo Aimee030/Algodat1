@@ -23,6 +23,9 @@ class SparseVectorTest {
         //setElement and getElement are tested together
     void setAndGetElement() {
 
+        //test get for not set but theoretically existing element
+        Assertions.assertEquals(0.0, v1.getElement(5));
+
         //test set with get for set element
         v1.setElement(2, 2.0);
         Assertions.assertEquals(2.0, v1.getElement(2));
@@ -31,12 +34,13 @@ class SparseVectorTest {
         v1.setElement(2, 5.0);
         Assertions.assertEquals(5.0, v1.getElement(2));
 
-        //test get for not set but theoretically existing element
-        Assertions.assertEquals(0.0, v1.getElement(5));
-
         //test set of elements with value 0.0 with nodeExists
         v1.setElement(11, 0.0);
         Assertions.assertEquals(false, v1.nodeExists(11));
+
+        //test overwrite existing node with 0.0
+        v1.setElement(2, 0.0);
+        Assertions.assertEquals(false, v1.nodeExists(2));
 
         //test sorting by index by filling vector and comparing to sorted helpvector
         v2.setElement(4, 4.0);
